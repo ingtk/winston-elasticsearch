@@ -69,11 +69,11 @@ describe('winston-elasticsearch:', function() {
     describe('the logged message', function() {
       it('should be found in the index', function(done) {
         logger.transports.elasticsearch.search('message:logmessage1').then(
-          (res) => {
+          function(res) {
             res.hits.total.should.be.above(0);
             done();
           },
-          (err) => {
+          function(err) {
             should.not.exist(err);
             done();
           });
